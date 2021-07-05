@@ -1,0 +1,35 @@
+---
+title: "Week 27"
+author: "Nabil Murtadha"
+date: "04/07/2021"
+output: github_document
+---
+
+## Tidytuesday week 27
+
+Tidytuesday é um movimento de engaiamento onde toda semana é liberada um `data base` para a comunidade demonstrar suas habilidades
+
+A semana 27 é sobre a base de dados sobre Animais resgatados feito pelo [Governo de Londres](URL(https://data.london.gov.uk/dataset/animal-rescue-incidents-attended-by-lfb))
+
+*Carregando os dados*
+```{r carregando a base, message=FALSE}
+#install.packages("tidytuesdayR")
+tuesdata <- tidytuesdayR::tt_load(2021, week = 27)
+
+animal_rescues <- tuesdata$animal_rescues
+
+```
+
+As variáveis estão representada pela tabela abaixo. Após de limpar a base com o pacote `janitor` como recomendado pelo [Tidytuesday](URL(https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-06-29/readme.md)) 
+```{r limpeza }
+#Tornando os nomes das variáveis mais amigáveis
+janitor::clean_names(animal_rescues)
+```
+
+```{r tabela, include=FALSE }
+# gerando a tabela
+reactable::reactable(animal_rescues, compact = TRUE, defaultPageSize = 4,
+                     striped = TRUE)
+```
+
+
