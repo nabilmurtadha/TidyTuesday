@@ -1,4 +1,10 @@
-#' **carregando a base**
+#'---
+#'title: "#TidyTuesday"
+#'subtitle: "Week 27"
+#'author: "Nabil Murtadha"
+#'---
+
+#' **Carregando a base**
 ## ----  message = FALSE, warning = FALSE ------
 tuesdata <- tidytuesdayR::tt_load(2021, week = 27)
 animal_rescues <- tuesdata$animal_rescues
@@ -64,5 +70,5 @@ plot %>%
   theme_minimal()
 
 #' Segundo o [The Guardian](URL(https://www.theguardian.com/world/2021/jan/08/animal-rescues-london-fire-brigade-rise-2020-pandemic-year)) no ano pandêmico
-#' o numero de ocorrências aumentaram em 20% comparado em 2019, além disso, os gráfico acima revela que por enquanto é a maior média anual desde 2009 se
+#' o numero de ocorrências aumentaram em 20% comparado a 2019. Além disso, o gráfico acima revela que por enquanto é a maior média anual desde 2009 se
 #' desconsiderarmos a média dos primeiros meses de 2021 que se encontra com uma média de `30.2`.
