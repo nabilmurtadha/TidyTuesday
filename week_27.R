@@ -66,4 +66,3 @@ plot %>%
 #' Segundo o [The Guardian](URL(https://www.theguardian.com/world/2021/jan/08/animal-rescues-london-fire-brigade-rise-2020-pandemic-year)) no ano pandêmico
 #' o numero de ocorrências aumentaram em 20% comparado em 2019, além disso, os gráfico acima revela que por enquanto é a maior média anual desde 2009 se
 #' desconsiderarmos a média dos primeiros meses de 2021 que se encontra com uma média de `30.2`.
-  
