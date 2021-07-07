@@ -135,6 +135,7 @@ users <- c("KimKardashian", "justinbieber", "taylorswift13",
            "cnn", "foxnews", "msnbc", "maddow", "seanhannity",
            "potus", "epa", "hillaryclinton", "realdonaldtrump",
            "natesilver538", "ezraklein", "annecoulter")
+
 famous_tweeters <- lookup_users(users)
 
 # preview dados dos usuarios
