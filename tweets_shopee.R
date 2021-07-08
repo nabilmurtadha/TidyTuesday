@@ -42,4 +42,4 @@ tweets <- palavras_freq %>% filter(nchar(word) > 3,
 wordcloud2(tweets,color = "white", backgroundColor = "#FF6600")
 
 # twittando
-post_tweet("Reação do Twitter sobre a promoção 07/07 da Shopee. A nuvem de palavra representa as palavras mais reproduzidas nos tweets durante o dia. #Rstats #Shopee", media = "shopee.png")
+#post_tweet("Reação do Twitter sobre a promoção 07/07 da Shopee. A nuvem de palavra representa as palavras mais reproduzidas nos tweets durante o dia. #Rstats #Shopee", media = "shopee.png")
