@@ -79,11 +79,6 @@ temp %>%
         axis.text = element_text(colour = "white", size = 10),
         legend.position = "none",
         plot.background = element_rect(fill = "#696969", colour = "#696969"))
-        
-  
-
-
-
 
 
 
