@@ -4,7 +4,7 @@
 #'author: "Nabil Murtadha"
 #'---
 
-#' ** Carregando a base da semana **
+#' **Carregando a base da semana**
 #' A semana 28 trás O dia da independência dos países.
 ## ---- base , message = FALSE, warning = FALSE ------
 tuesdata <- tidytuesdayR::tt_load('2021-07-06')
@@ -12,17 +12,13 @@ tuesdata <- tidytuesdayR::tt_load(2021, week = 28)
 
 holidays <- tuesdata$holidays
 
-#' ** Carregando pacotes **
+#' **Carregando pacotes**
 ## ---- pacotes, message = FALSE, warning = FALSE ---- 
 library(tidyverse)
 library(ggplot2)
 library(lubridate)
-library(ggbump)
-library(ggtext)
 
-install.packages("ggbump","ggtext")
-
-#' ** Ivestigando as variáveis **
+#' **Ivestigando as variáveis**
 
 # Tipos de colonizadores
 unique(holidays$independence_from)
@@ -51,26 +47,39 @@ temp <- holidays %>%
                                independence_from %in% france~"France",
                                independence_from %in% spain~"Spain")) %>%
   filter(!is.na(metropole)) %>%
-  select(country, metropole, date) %>%
-  group_by(country, metropole, date) %>%
+  select(country, metropole, date, year) %>%
+  group_by(country, metropole, date, year) %>%
   summarise(n = n()) %>%
   ungroup() %>%
   group_by(metropole) %>%
   arrange(date) %>%
-  mutate(soma = cumsum(n))
+  mutate(soma = cumsum(n)) %>% ungroup()
   
 
-#' ** Plotando **
+#' **Plotando**
+## ---- plot, message = FALSE, warning = FALSE ---- 
 # plotando
 
-subset(temp) %>%
-  ggplot(aes(x = date, y = soma,colour = metropole))+
-  geom_sigmoid(smooth = 10,alpha=1) +
-  geom_point( size = 1)+
+temp %>%
+  ggplot(aes(x = year, y = metropole, colour = metropole))+
+  geom_line(size = 5) + geom_point(size = 10)+
+  geom_jitter(colour = "black", width = 5, height = 0.5, size = 0.4)+
+  geom_text(check_overlap = TRUE, angle = 45, aes(label = country), size = 3, colour = "white")+
+  annotate(geom = "text", x = 1986, y = 4, label = "Brunei", colour = "white", size = 3, angle = 45)+
+  annotate(geom = "text", x = 1982, y = 1, label = "Djibouti", colour = "white", size = 3, angle = 45)+
+  scale_x_continuous(breaks = seq(1580,2010,50))+
+  scale_color_manual(name = "Metrópole",values = c("United Kingdom" = "#CF142B",
+                                                   "Spain" = "#F1BF00",
+                                                   "Portugal" = "#006600",
+                                                   "France" = "#0055A4"))+
   theme_minimal()+
-  scale_color_discrete(name = "Metrópole")+
-  scale_y_continuous(name = "Total", breaks = seq(0,60,10))+
-  coord_flip()
+  theme(axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        panel.grid = element_blank(),
+        axis.text = element_text(colour = "white", size = 10),
+        legend.position = "none",
+        plot.background = element_rect(fill = "#696969", colour = "#696969"))
+        
   
 
 
